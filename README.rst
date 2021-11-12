@@ -69,28 +69,31 @@ Admin Interface
 
 Here some users interface example.
 
+First one is how the change form is shown. There are two new buttons in the submit row that allows to accept or reject entries that not yet moderated.
+
 .. image:: docs/images/not_moderated_instance.png
     :alt: Not moderated instance image
 
-First one is how the change form is shown. There are two new buttons in the submit row that allows to accept or reject entries that not yet moderated.
+This is how an accepted entry looks.
 
 .. image:: docs/images/accepted_instance.png
     :alt: Accepted instance image
 
-This is how an accepted entry looks.
+This is how a rejected entry looks.
 
 .. image:: docs/images/rejected_instance.png
     :alt: Rejected instance image
 
-This is how a rejected entry looks.
+A confirmation pop-up is shown when an acceptance or rejection request is made
 
 .. image:: docs/images/pop_up.png
     :alt: Pop-up image
-A confirmation pop-up is shown when an acceptance or rejection request is made
+
+Last image shows actions in the changelist.
 
 .. image:: docs/images/actions_available.png
     :alt: Actions image
-Last image shows actions in the changelist.
+
 
 Running Tests
 -------------
