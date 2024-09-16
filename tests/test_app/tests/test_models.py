@@ -1,7 +1,6 @@
 from django.test import TestCase
 
 from moderation_model_mixin import settings
-from moderation_model_mixin.querysets import ModerableQuerySet
 from tests.test_app.models import ExampleModel
 
 
@@ -14,7 +13,9 @@ class ModelTest(TestCase):
     # =======================================================================
     def test_unit(self):
         example = ExampleModel.objects.create()
-        self.assertEqual(example.moderation_state, settings.MODERATION_STATE_QUEUED)
+        self.assertEqual(
+            example.moderation_state, settings.MODERATION_STATE_QUEUED
+        )
         self.assertTrue(example.is_rejectable())
         self.assertTrue(example.is_acceptable())
         self.assertTrue(example.is_actual)
@@ -25,7 +26,9 @@ class ModelTest(TestCase):
         self.assertFalse(example.is_sharable)
 
         example.set_accepted()
-        self.assertEqual(example.moderation_state, settings.MODERATION_STATE_ACCEPTED)
+        self.assertEqual(
+            example.moderation_state, settings.MODERATION_STATE_ACCEPTED
+        )
         self.assertTrue(example.is_rejectable())
         self.assertTrue(example.is_actual)
         self.assertTrue(example.is_moderated)
@@ -36,7 +39,9 @@ class ModelTest(TestCase):
         self.assertFalse(example.is_rejected)
 
         example.set_rejected()
-        self.assertEqual(example.moderation_state, settings.MODERATION_STATE_REJECTED)
+        self.assertEqual(
+            example.moderation_state, settings.MODERATION_STATE_REJECTED
+        )
         self.assertTrue(example.is_moderated)
         self.assertTrue(example.is_rejected)
 
@@ -63,4 +68,3 @@ class ModelTest(TestCase):
 
         next_of_first = first.get_next()
         self.assertEqual(middle, next_of_first)
-

@@ -1,8 +1,6 @@
 from django.test import TestCase
 
 from moderation_model_mixin import settings
-from moderation_model_mixin.managers import AcceptedModerableEntryManager
-from moderation_model_mixin.querysets import ModerableQuerySet
 from tests.test_app.models import ExampleModel
 
 
@@ -27,7 +25,9 @@ class ManagerTest(TestCase):
         self.assertNotIn(example, ExampleModel.rejected_objects.all())
         self.assertNotIn(example, ExampleModel.not_moderated_objects.all())
 
-        example2 = ExampleModel.objects.create(moderation_state=settings.MODERATION_STATE_ACCEPTED)
+        example2 = ExampleModel.objects.create(
+            moderation_state=settings.MODERATION_STATE_ACCEPTED
+        )
 
         self.assertIn(example2, ExampleModel.published_objects.all())
         self.assertIn(example2, ExampleModel.accepted_objects.all())
@@ -52,7 +52,9 @@ class ManagerTest(TestCase):
         self.assertNotIn(example, ExampleModel.not_moderated_objects.all())
         self.assertNotIn(example, ExampleModel.published_objects.all())
 
-        example2 = ExampleModel.objects.create(moderation_state=settings.MODERATION_STATE_REJECTED)
+        example2 = ExampleModel.objects.create(
+            moderation_state=settings.MODERATION_STATE_REJECTED
+        )
 
         self.assertIn(example2, ExampleModel.moderated_objects.all())
         self.assertIn(example2, ExampleModel.rejected_objects.all())
