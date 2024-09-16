@@ -29,7 +29,9 @@ class QuerySetTest(TestCase):
         self.assertNotIn(example, self.moderable_queryset.rejected())
         self.assertNotIn(example, self.moderable_queryset.not_moderated())
 
-        example2 = ExampleModel.objects.create(moderation_state=settings.MODERATION_STATE_ACCEPTED)
+        example2 = ExampleModel.objects.create(
+            moderation_state=settings.MODERATION_STATE_ACCEPTED
+        )
 
         self.assertIn(example2, self.moderable_queryset.accepted())
         self.assertIn(example2, self.moderable_queryset.moderated())
@@ -52,7 +54,9 @@ class QuerySetTest(TestCase):
         self.assertNotIn(example, self.moderable_queryset.accepted())
         self.assertNotIn(example, self.moderable_queryset.not_moderated())
 
-        example2 = ExampleModel.objects.create(moderation_state=settings.MODERATION_STATE_REJECTED)
+        example2 = ExampleModel.objects.create(
+            moderation_state=settings.MODERATION_STATE_REJECTED
+        )
 
         self.assertIn(example2, self.moderable_queryset.moderated())
         self.assertIn(example2, self.moderable_queryset.rejected())
